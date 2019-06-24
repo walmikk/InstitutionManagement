@@ -1,0 +1,33 @@
+<div class="container" *ngIf="staffAddForm">
+    <form class="container" [formGroup]="staffAddForm" (ngSubmit)="doRegister()">
+        <div class="alert alert-secondary">
+            <h3><span *ngIf="index == undefined">Staff Registration</span><span *ngIf="index != undefined">Staff Update</span> <a routerLink="/admin/list" class="btn btn-secondary float-right">Back</a></h3>
+        </div>
+        <div class="form-group">
+            <label class="control-label">First Name</label>
+            <input class="form-control" type="text" formControlName="first_name">
+            <small class="text-danger" *ngIf="staffAddForm.controls.first_name.invalid && (staffAddForm.controls.first_name.dirty || staffAddForm.controls.first_name.touched)">Please enter 3 to 50 characters</small>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Last Name</label>
+            <input class="form-control" type="text" formControlName="last_name">
+            <small class="text-danger" *ngIf="staffAddForm.controls.last_name.invalid && (staffAddForm.controls.last_name.dirty || staffAddForm.controls.last_name.touched)">Please enter 3 to 50 characters </small>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Email Address</label>
+            <input class="form-control" type="text" formControlName="email">
+            <small class="text-danger" *ngIf="staffAddForm.controls.email.invalid && (staffAddForm.controls.email.dirty || staffAddForm.controls.email.touched)">Please enter valid email address</small>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Phone</label>
+            <input class="form-control" type="number" formControlName="phone">
+            <small class="text-danger" *ngIf="staffAddForm.controls.phone.invalid && (staffAddForm.controls.phone.dirty || staffAddForm.controls.phone.touched)">Please enter valid phone number</small>
+        </div>
+        <br>
+        <button class="btn btn-primary" type="submit" [disabled]="!staffAddForm.valid"><span *ngIf="index == undefined">Register</span><span *ngIf="index != undefined">Update</span></button>
+
+    </form>
+</div>

@@ -1,0 +1,59 @@
+<div class="container">
+    <form class="container" [formGroup]="rForm" (ngSubmit)="onLogin(rForm.value)">
+        <div class="alert alert-secondary">
+            <h3><span *ngIf="index == undefined">User Registration</span><span *ngIf="index != undefined">Staff Update</span> <a routerLink="/" class="btn btn-secondary float-right">Back</a></h3>
+        </div>
+        <div class="form-group">
+            <label for="">Email</label>
+            <input type="text" name="" class="form-control" formControlName="email" [class.is-invalid]="rForm.get('email').invalid && rForm.get('email').touched">
+            <small class="text-danger" [class.d-none]="rForm.get('email').valid || rForm.get('email').untouched">Username is required.</small>
+        </div>
+        <div class="form-group">
+            <label for="">Passowrd</label>
+            <input type="password" name="" class="form-control" formControlName="password" [class.is-invalid]="rForm.get('password').invalid && rForm.get('password').touched">
+            <div *ngIf="rForm.get('password').invalid && rForm.get('password').touched">
+                <small class="text-danger" *ngIf="rForm.get('password').invalid && rForm.get('password').errors?.required">Password is required.</small>
+                <small class="text-danger" *ngIf="rForm.get('password').invalid && rForm.get('password').errors?.minlength">Password should be greater that 8 character.</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">Contact Number</label>
+            <input type="text" name="" class="form-control" formControlName="contactno" [class.is-invalid]="rForm.get('contactno').invalid && rForm.get('contactno').touched" />
+            <div *ngIf="rForm.get('contactno').invalid && rForm.get('contactno').touched">
+                <small class="text-danger" *ngIf="rForm.get('contactno').invalid && rForm.get('contactno').errors?.required">Contact Number is required.</small>
+                <!-- <small class="text-danger" *ngIf="rForm.get('contactnumber').invalid && rForm.get('contactnumber').errors?.pattern">Contact Number should be Numeric.</small> -->
+                <!-- <small class="text-danger" *ngIf="rForm.get('contactnumber').invalid && rForm.get('contactnumber').errors?.minlength">Contact Number should be greater that 8 character.</small> -->
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="">First name</label>
+            <input type="text" name="" class="form-control" formControlName="firstname" [class.is-invalid]="rForm.get('firstname').invalid && rForm.get('firstname').touched">
+            <small class="text-danger" [class.d-none]="rForm.get('firstname').valid || rForm.get('firstname').untouched">First name is required.</small>
+        </div>
+
+        <div class="form-group">
+            <label for="">Last name</label>
+            <input type="text" name="" class="form-control" formControlName="lastname" [class.is-invalid]="rForm.get('lastname').invalid && rForm.get('lastname').touched">
+            <small class="text-danger" [class.d-none]="rForm.get('lastname').valid || rForm.get('lastname').untouched">Last name is required.</small>
+        </div>
+
+        <div class="form-group">
+            <label for="">Address</label>
+            <textarea name="" class="form-control" formControlName="address" [class.is-invalid]="rForm.get('address').invalid && rForm.get('address').touched"></textarea>
+            <div *ngIf="rForm.get('address').invalid && rForm.get('address').touched">
+                <small class="text-danger" *ngIf="rForm.get('address').invalid && rForm.get('address').errors?.required">Address is required.</small>
+                <small class="text-danger" *ngIf="rForm.get('address').invalid && rForm.get('address').errors?.maxlength">Address should not be greater than 100 character</small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="">Date of Birth</label>
+            <input max="2014-04-01" type="date" name="" class="form-control" formControlName="dateofbirth" [class.is-invalid]="rForm.get('dateofbirth').invalid && rForm.get('dateofbirth').touched">
+            <small class="text-danger" [class.d-none]="rForm.get('dateofbirth').valid || rForm.get('dateofbirth').untouched">Date of birth is required.</small>
+        </div>
+
+        <button class="btn btn-primary" value="Submit" [disabled]="rForm.invalid">Submit</button>
+    </form>
+</div>

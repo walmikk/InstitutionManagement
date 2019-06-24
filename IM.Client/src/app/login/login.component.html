@@ -1,0 +1,25 @@
+<div class="container">
+    <form [formGroup]="loginForm" (ngSubmit)="doLogin()">
+        <div class="alert alert-secondary">
+            <h3>Admin Login</h3>
+        </div>
+        <div class="form-group">
+            <label for="email"><b>Email</b></label>
+            <input class="form-control" type="email" formControlName="email" [class.is-invalid]="loginForm.controls.email.invalid && (loginForm.controls.email.dirty || loginForm.controls.email.touched)">
+            <span class="text-danger" *ngIf="loginForm.controls.email.invalid && (loginForm.controls.email.dirty || loginForm.controls.email.touched)">Please enter valid email address</span>
+        </div>
+        <div class="form-group">
+            <label for="password"><b>Password</b></label>
+            <input class="form-control" type="password" formControlName="password" [class.is-invalid]="loginForm.controls.password.invalid && (loginForm.controls.password.dirty || loginForm.controls.password.touched)">
+            <span class="text-danger" *ngIf="loginForm.controls.password.invalid && (loginForm.controls.password.dirty || loginForm.controls.password.touched)">Password must be at least 6 characters long, and contain a number</span>
+        </div>
+        <br>
+        <button class="btn btn-primary" type="submit" [disabled]="!loginForm.valid">Login</button>
+    </form>
+
+    <div class="">
+        <h4>Notes : </h4>
+        <p>Credentials : test@gmail.com &amp; admin123</p>
+        <p>This is are Admin creadentials for Staff Creation</p>
+    </div>
+</div>

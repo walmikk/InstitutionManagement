@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">IIM Institute</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" [routerLink]="['/home']" routerLinkActive="router-link-active">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/course']" routerLinkActive="router-link-active">Courses</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/admin']" routerLinkActive="router-link-active">Admin</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/register']" routerLinkActive="router-link-active">Register</a>
+            </li>
+            <li class="nav-item" *ngIf="loggedin()">
+                <a class="nav-link" (click)="logout()">Logout</a>
+            </li>
+        </ul>
+
+        <div *ngIf="loggedin()" class="dropdown text-light">
+            <a class="btn btn-secondary dropdown-toggle text-light" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Welcome
+          </a>
+
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="#"><i class="fa fa-user"></i>Edir Profile</a>
+                <a class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out"></i>Logout</a>
+            </div>
+        </div>
+
+        <form [formGroup]="loginForm" *ngIf="!loggedin()" class="form-inline mt-2 mt-md-0" (ngSubmit)="onLogin(loginForm.value)">
+            <input class="form-control mr-sm-2" type="text" formControlName="email" placeholder="Username" aria-label="email">
+            <input class="form-control mr-sm-2" type="password" formControlName="password" placeholder="Passowrd" aria-label="password">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+        </form>
+    </div>
+</nav>

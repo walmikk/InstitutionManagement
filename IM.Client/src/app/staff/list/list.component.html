@@ -1,0 +1,36 @@
+<!-- Created By : Sangwin Gawande (http://sangw.in) -->
+
+<div class="container" *ngIf="staffListData">
+    <div class="alert alert-secondary" role="alert">
+        <h3>Staff List <button routerLink="/admin/add" class="btn btn-secondary float-right">Add New Staff</button></h3>
+    </div>
+    <!-- <span><i class="w3-medium fa fa-search"></i> Search : <input class="" type="text" [(ngModel)]='filterData'></span> -->
+
+    <div class="panel-default" *ngIf="staffListData?.length != 0">
+        <table class="table table-hover table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Sr. No.</th>
+                    <!-- <th>ID</th> -->
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tr *ngFor="let staff of staffListData; index as i;" appHighlightStaff>
+                <td>{{i +1}}</td>
+                <td class="pointer" [routerLink]="['detail', i]">{{staff.first_name}} </td>
+                <td class="pointer" [routerLink]="['detail', i]">{{staff.last_name}}</td>
+                <td class="pointer" [routerLink]="['detail', i]">{{staff.email}}</td>
+                <td class="pointer" [routerLink]="['detail', i]">{{staff.phone}}</td>
+                <td><button [routerLink]="['update', i]" class="btn btn-primary">Update</button></td>
+                <td><button (click)="deleteStaff(i);" class="btn btn-danger">Delete</button></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Created By : Sangwin Gawande (http://sangw.in) -->
